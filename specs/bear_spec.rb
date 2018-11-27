@@ -59,6 +59,28 @@ class BearTest < MiniTest::Test
       @yogi_bear.eat_fish(@river_esk)
       assert_equal(1 , @river_esk.count_river_fish)
     end
+    def test_vomit_fish
+      # Eat a few fish first
+      @barney_bear.eat_fish(@river_tweed)
+      @barney_bear.eat_fish(@river_tweed)
+      @barney_bear.eat_fish(@river_tweed)
+      @barney_bear.eat_fish(@river_tweed)
+      @barney_bear.eat_fish(@river_tweed)
+      @barney_bear.eat_fish(@river_tweed)
+      @barney_bear.eat_fish(@river_esk)
+      @barney_bear.eat_fish(@river_esk)
+      assert_equal(8, @barney_bear.count_fish_eaten)
+      # Oops! too many fish eaten!!!
+      @barney_bear.vomit_fish(@river_esk)
+      assert_equal(7, @barney_bear.count_fish_eaten)
+      assert_equal(1, @river_esk.count_river_fish)
+    end
+
+
+
+
+
+
 
 
 

@@ -16,6 +16,9 @@ attr_accessor :river_fish
     def take_fish
       result = @river_fish.pop
     end
+    def add_fish(fish)
+      @river_fish << fish
+    end 
 
 
 
