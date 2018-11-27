@@ -35,12 +35,18 @@ class BearTest < MiniTest::Test
     def test_roar
       assert_equal("GRRRRRRRRAAR!", @enuffto_bear.roar)
     end
+
     def test_count_eaten
       @yogi_bear.eat_fish(@river_tweed)
       @yogi_bear.eat_fish(@river_tweed)
       @yogi_bear.eat_fish(@river_tweed)
       @yogi_bear.eat_fish(@river_esk)
       assert_equal(4, @yogi_bear.count_fish_eaten)
+      @yogi_bear.eat_fish(@river_esk)
+      assert_equal(5, @yogi_bear.count_fish_eaten)
+      @yogi_bear.eat_fish(@river_esk)
+      # Test no fish left in river Esk so no increment in fish eaten
+      assert_equal(5, @yogi_bear.count_fish_eaten)
     end
 
     def test_eat_fish
@@ -48,13 +54,10 @@ class BearTest < MiniTest::Test
       current = @river_tweed.count_river_fish
       @yogi_bear.eat_fish(@river_tweed)
       assert_equal(current - 1, @river_tweed.count_river_fish)
-      p @yogi_bear.fish_eaten
       @yogi_bear.eat_fish(@river_tweed)
       assert_equal(current - 2, @river_tweed.count_river_fish)
-      p @yogi_bear.fish_eaten
       @yogi_bear.eat_fish(@river_esk)
-      p @yogi_bear.fish_eaten
-      p @river_esk.river_fish
+      assert_equal(1 , @river_esk.count_river_fish)
     end
 
 
