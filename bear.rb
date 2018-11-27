@@ -19,6 +19,10 @@ attr_accessor :fish_eaten
     def vomit_fish(river)
       river.add_fish(@fish_eaten.pop) if @fish_eaten.length > 0
     end
+    def eat_all_fish(river)
+      @fish_eaten += river.river_fish if river.count_river_fish > 0
+      river.river_fish.clear
+    end
 
     def count_fish_eaten
       return @fish_eaten.length

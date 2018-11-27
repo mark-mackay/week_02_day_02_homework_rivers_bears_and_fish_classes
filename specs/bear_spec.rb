@@ -76,6 +76,12 @@ class BearTest < MiniTest::Test
       assert_equal(1, @river_esk.count_river_fish)
     end
 
+    def test_eat_all_the_fish_in_the_river
+      @enuffto_bear.eat_all_fish(@river_tweed)
+      assert_equal(0, @river_tweed.count_river_fish)
+      assert_equal(6, @enuffto_bear.count_fish_eaten)
+    end
+
 
 
 
